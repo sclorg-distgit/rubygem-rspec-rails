@@ -6,11 +6,10 @@
 
 # Circular dependency with rubygem-ammeter.
 %{?_with_bootstrap: %global bootstrap 1}
-%global bootstrap 1
 
 Name: %{?scl_prefix}rubygem-%{gem_name}
 Version: 3.4.0
-Release: 4%{?dist}
+Release: 5%{?dist}
 Summary: RSpec for Rails
 Group: Development/Languages
 License: MIT
@@ -40,7 +39,7 @@ BuildRequires: %{?scl_prefix_ruby}ruby(release)
 BuildRequires: %{?scl_prefix_ruby}rubygems-devel
 BuildRequires: %{?scl_prefix_ruby}ruby
 %if ! 0%{?bootstrap}
-#BuildRequires: %{?scl_prefix}rubygem(cucumber)
+BuildRequires: %{?scl_prefix}rubygem(cucumber)
 BuildRequires: %{?scl_prefix}rubygem(actionmailer)
 BuildRequires: %{?scl_prefix}rubygem(activerecord)
 BuildRequires: %{?scl_prefix}rubygem(ammeter)
@@ -119,6 +118,9 @@ popd
 %doc %{gem_instdir}/README.md
 
 %changelog
+* Wed Apr 06 2016 Pavel Valena <pvalena@redhat.com> - 3.4.0-5
+- Enable tests
+
 * Wed Apr 06 2016 Pavel Valena <pvalena@redhat.com> - 3.4.0-4
 - Add scl macros
 
